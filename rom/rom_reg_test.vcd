@@ -1,0 +1,77 @@
+$date
+	Fri May 19 16:58:07 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module rom_reg_test $end
+$var wire 16 ! instruction [15:0] $end
+$var reg 8 " addr [7:0] $end
+$var reg 8 # i [7:0] $end
+$scope module U_rom_reg $end
+$var wire 8 $ addr [7:0] $end
+$var wire 16 % instruction [15:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b110000001010111 %
+b0 $
+bx #
+b0 "
+b110000001010111 !
+$end
+#10
+b0 #
+#11
+b1 #
+#12
+b10 #
+b1 !
+b1 %
+b1 "
+b1 $
+#13
+b11 #
+b10 !
+b10 %
+b10 "
+b10 $
+#14
+b100 #
+b11 !
+b11 %
+b11 "
+b11 $
+#15
+b101 #
+b100 !
+b100 %
+b100 "
+b100 $
+#16
+b110 #
+b101 !
+b101 %
+b101 "
+b101 $
+#17
+b111 #
+b110 !
+b110 %
+b110 "
+b110 $
+#18
+b1000 #
+b111 !
+b111 %
+b111 "
+b111 $
+#28
