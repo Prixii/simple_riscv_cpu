@@ -111,7 +111,7 @@
         
     endmodule
 
-// ****************** 支持四种指令的数据通路 **********************
+// ****************** 支持四种指令的神奇数据通路 **********************
 
     module data_path_pro_max_ultra (
         clk,            // 时钟信号
@@ -144,7 +144,7 @@
 
         assign reg_write_en = (opcode != `sw_pmu) ? 1'b1 : 1'b0;
         // 如果操作码是add,addi，就设置为b000
-        assign ALU_CTL = (opcode == `add_pmu || opcode == `addi_pmu ) ? 3'b000 : 3'b111;
+        // assign ALU_CTL = (opcode == `add_pmu || opcode == `addi_pmu ) ? 3'b000 : 3'b111;
         assign ALU_DA = read_data_1;
         assign ALU_DB = (opcode == `addi_pmu ) ? imm : read_data_2;
         assign data_rom_write_data = (opcode == `sw_pmu) ? read_data_1 : 16'd0; 
@@ -153,7 +153,6 @@
     // 输入控制信号ALU_CTL，两个数据ALU_DA, ALU_DB
     // 输出结构ALU_result
         wire [15: 0] ALU_DA, ALU_DB;
-        wire [2: 0] ALU_CTL;
         wire ALU_OverFlow;
 
         ALU U_ALU(

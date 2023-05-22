@@ -7,7 +7,7 @@
         instruction,    // 传入的指令
         rom_addr,       // rom目标地址
         data_write_en,  // data_rom_reg写使能
-        data_rom_out,
+        data_rom_write,
         data_rom_addr,
     );
         input clk;
@@ -16,7 +16,7 @@
         
         output [7: 0] rom_addr;
         output data_write_en;
-        output [15: 0] data_rom_out;
+        output [15: 0] data_rom_write;
         output [5: 0] data_rom_addr; 
 
         wire [6: 0] opcode;
@@ -35,7 +35,7 @@
             .rom_addr(rom_addr),
             .ALU_result(ALU_result),
             .data_rom_addr(data_rom_addr),
-            .data_rom_write_data(data_rom_out)
+            .data_rom_write_data(data_rom_write)
         );
 
         cu U_cu(
@@ -58,7 +58,7 @@
 
     rom_addr,       // rom目标地址
     data_write_en,  // data_rom_reg写使能
-    data_rom_out,
+    data_rom_write,
     data_rom_addr,
 );
     input clk;
@@ -68,7 +68,7 @@
     
     output [7: 0] rom_addr;
     output data_write_en;
-    output [15: 0] data_rom_out;
+    output [15: 0] data_rom_write;
     output [8: 0] data_rom_addr; 
 
     wire [3: 0] opcode;
@@ -88,7 +88,7 @@
         .rom_addr(rom_addr),
         .ALU_result(ALU_result),
         .data_rom_addr(data_rom_addr),
-        .data_rom_write_data(data_rom_out)
+        .data_rom_write_data(data_rom_write)
     );
 
     cu_pro_max_ultra U_cu_pmu(
@@ -96,7 +96,5 @@
         .ALU_CTL(ALU_CTL),
         .data_rom_write_en(data_write_en)
     );
-
-
 
 endmodule

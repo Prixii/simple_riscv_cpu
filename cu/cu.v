@@ -13,9 +13,9 @@ module cu(
 endmodule
 
 module cu_pro_max_ultra(
-    opcode,
-    ALU_CTL,
-    data_rom_write_en,
+    opcode, // 操作码
+    ALU_CTL,    // ALU控制信号
+    data_rom_write_en,  // data_rom写使能
 );
     input [3: 0] opcode;
     output data_rom_write_en;
