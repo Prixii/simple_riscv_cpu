@@ -39,8 +39,6 @@
         output [2: 0] rs1, rs2, rs3;
         output [5: 0] addr;
         
-        wire I_type, R_type, S_type; // 指令类型判别
-
         assign opcode = instruction[15: 9]; 
         assign rs1 = instruction[8: 6];
         assign rs2 = instruction[5: 3];
@@ -64,9 +62,6 @@
         output [2: 0] rs1, rs2, rs3;
         output [8: 0] addr;
         output [8: 0] imm;
-
-
-        wire I_type, R_type, S_type; // 指令类型判别
 
         assign opcode = instruction[15: 12]; 
         assign rs1 = instruction[11: 9];

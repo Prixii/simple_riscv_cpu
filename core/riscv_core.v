@@ -21,7 +21,6 @@
 
         wire [6: 0] opcode;
         wire [2: 0] rs1, rs2, rs3;
-        wire write_en;
         wire [2: 0] ALU_CTL;
         wire [15: 0] ALU_result;
 
@@ -41,7 +40,6 @@
 
         cu U_cu(
             .opcode(opcode),
-            .write_en(write_en),
             .ALU_CTL(ALU_CTL),
             .data_rom_wrtie_en(data_write_en)
         );
@@ -75,7 +73,6 @@
 
     wire [3: 0] opcode;
     wire [2: 0] rs1, rs2;
-    wire write_en;
     wire [2: 0] ALU_CTL;
     wire [15: 0] ALU_result;
 
@@ -96,7 +93,6 @@
 
     cu_pro_max_ultra U_cu_pmu(
         .opcode(opcode),
-        .write_en(write_en),
         .ALU_CTL(ALU_CTL),
         .data_rom_wrtie_en(data_write_en)
     );

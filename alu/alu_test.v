@@ -8,7 +8,7 @@ module alu_test ();
     wire [15: 0] ALU_DC;
     wire ALU_OverFlow;
 
-    ALU alu(
+    ALU U_alu(
         .ALU_DA(ALU_DA), .ALU_DB(ALU_DB), 
         .ALU_CTL(ALU_CTL),
         .ALU_SHIFT(ALU_SHIFT), 

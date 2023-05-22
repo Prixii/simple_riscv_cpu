@@ -3,7 +3,6 @@ module ram (
     write_n,    // 写使能，低电平触发
     addr,       // 目标地址
     data_in,    // 写入的数据
-    
     data_out,   // 读出的数据
 );
 
@@ -18,11 +17,8 @@ module ram (
 
     // ********** 写操作 *************
     always @(posedge clk ) begin    // 为了保证一致性，时钟上升沿触发
-        if (!write_n) begin         // 写使能低电平说明实行写操作
+        if (!write_n)               // 写使能低电平说明实行写操作
             ram_reg[addr] <= data_in;
-            
-        end
-        
     end
 
     // ********** 读操作 *************

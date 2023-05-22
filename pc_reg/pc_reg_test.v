@@ -4,9 +4,9 @@ module pc_reg_test ();
     
     reg clk;
     reg rst_n;
-    reg [7: 0] pc_next;
-
     wire [7: 0] pc_out;
+
+    reg[3: 0] i;
 
     pc_reg U_pc_reg(
         .clk(clk),
@@ -20,10 +20,11 @@ module pc_reg_test ();
         clk = 1'b0;
         rst_n = 1'b1;
     
-        #20
-        rst_n = 1'b0;
+        for (i = 0 ;i < 4'd10 ; i = i + 1) #1;
+        #1 rst_n <= ~rst_n;
+        #1 rst_n <= ~rst_n;
+        for (i = 0 ;i < 4'd10 ; i = i + 1) #1;
 
-        #20
         $finish;
 
     end

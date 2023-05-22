@@ -29,10 +29,10 @@ module ALU(
     ALU_DC,    // 运算结果
     ALU_OverFlow        // 溢出符号   
 );
-
     input [15: 0] ALU_DA, ALU_DB;
     input [3: 0] ALU_SHIFT;
     input [2: 0] ALU_CTL;
+    
     output reg [15: 0] ALU_DC;
     output ALU_OverFlow;
 
@@ -53,13 +53,11 @@ module ALU(
 
     // 算术运算
     wire [15: 0] arthimetic_result;
-
     wire ADD_OverFlow, ADD_carry;
-
     wire sub_ctl;
-    assign sub_ctl = ALU_CTL[0];
-
     wire [15: 0] neg_ALU_DB;
+    
+    assign sub_ctl = ALU_CTL[0];
     assign neg_ALU_DB = ALU_DB ^ {32{sub_ctl}};
 
     Adder ADD(
@@ -70,26 +68,21 @@ module ALU(
         .ADD_carry(ADD_carry)
     );
 
-
     // 逻辑运算
     reg [15: 0] logic_result;
 
     wire logic_ctl;
     assign logic_ctl = ALU_CTL[0];
 
-    always@(*) begin
-        case (logic_ctl)
-            1'b0: logic_result = ALU_DA & ALU_DB;
-            1'b1: logic_result = ALU_DA | ALU_DB; 
-        endcase
-    end
+    always@(*) 
+        logic_result = (logic_ctl == 1'b0) ? (ALU_DA & ALU_DB) : (ALU_DA | ALU_DB); 
 
     // 移位运算
     wire [15: 0] shift_result;
-
     wire [1:0] shift_ctl;
-    assign shift_ctl = ALU_CTL[1:0];
 
+    assign shift_ctl = ALU_CTL[1:0];
+    
     Shifter shifter(
         .ALU_DA(ALU_DA),
         .ALU_SHIFT(ALU_SHIFT),
@@ -112,6 +105,7 @@ module Adder(
 
 input [15: 0] ADD_DA, ADD_DB;
 input ADD_Cin;
+
 output [15: 0] ADD_DC;
 output ADD_OverFlow;
 output ADD_carry;

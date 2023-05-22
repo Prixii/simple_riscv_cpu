@@ -59,8 +59,6 @@ module reg_file_test ();
 
     end
 
-
-
     initial begin            
         $dumpfile("reg_file_test.vcd");      
         $dumpvars(0, reg_file_test);   
