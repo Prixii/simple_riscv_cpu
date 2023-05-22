@@ -41,7 +41,7 @@
         cu U_cu(
             .opcode(opcode),
             .ALU_CTL(ALU_CTL),
-            .data_rom_wrtie_en(data_write_en)
+            .data_rom_write_en(data_write_en)
         );
 
 
@@ -94,7 +94,7 @@
     cu_pro_max_ultra U_cu_pmu(
         .opcode(opcode),
         .ALU_CTL(ALU_CTL),
-        .data_rom_wrtie_en(data_write_en)
+        .data_rom_write_en(data_write_en)
     );
 
 

@@ -167,7 +167,6 @@
     // ************************** 定义PC ***********************
     // 无输入
     // 返回当前指令地址 pc_out
-
         pc_reg U_pc_reg(
             .clk(clk),
             .rst_n(rst_n),
@@ -195,14 +194,6 @@
     // ************************** 定义decoder ***********************
     // 输入指令 instruction
     // 返回 opcode, rs1, rs2, rs3
-        
-        // add_decoder U_add_decoder(
-        //     .instruction(instruction),
-        //     .opcode(opcode),
-        //     .rs1(rs1),.rs2(rs2),.rs3(rs3)
-        // );
-
-        
         decoder_pro_max_ultra U_decoder_pmu(
             .instruction(instruction),
             .opcode(opcode),
@@ -210,7 +201,5 @@
             .addr(data_rom_addr),
             .imm(imm)
         );
-
-
         
     endmodule

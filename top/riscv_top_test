@@ -1397,7 +1397,7 @@ S_00000235e4e87f30 .scope module, "U_cu" "cu" 6 42, 7 2 0, S_00000235e4ead6c0;
     .port_info 0 /INPUT 7 "opcode";
     .port_info 1 /OUTPUT 1 "write_en";
     .port_info 2 /OUTPUT 3 "ALU_CTL";
-    .port_info 3 /OUTPUT 1 "data_rom_wrtie_en";
+    .port_info 3 /OUTPUT 1 "data_rom_write_en";
     .port_info 4 /NODIR 0 "";
 v00000235e528db50_0 .net8 "ALU_CTL", 2 0, RS_00000235e529bf78;  alias, 2 drivers
 L_00000235e5308ae0 .functor BUFT 1, C4<0100011>, C4<0>, C4<0>, C4<0>;
@@ -1421,7 +1421,7 @@ L_00000235e5308b28 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
 v00000235e528de70_0 .net/2u *"_ivl_4", 0 0, L_00000235e5308b28;  1 drivers
 L_00000235e5308b70 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
 v00000235e528df10_0 .net/2u *"_ivl_6", 0 0, L_00000235e5308b70;  1 drivers
-v00000235e528e050_0 .net "data_rom_wrtie_en", 0 0, L_00000235e5363d80;  alias, 1 drivers
+v00000235e528e050_0 .net "data_rom_write_en", 0 0, L_00000235e5363d80;  alias, 1 drivers
 v00000235e528e370_0 .net "opcode", 6 0, L_00000235e5363880;  alias, 1 drivers
 v00000235e528e0f0_0 .net "write_en", 0 0, L_00000235e5363f60;  alias, 1 drivers
 L_00000235e5363920 .cmp/eq 7, L_00000235e5363880, L_00000235e5308ae0;
@@ -1833,7 +1833,7 @@ S_00000235e52fa730 .scope module, "U_cu_pmu" "cu_pro_max_ultra" 6 97, 7 17 0, S_
     .port_info 0 /INPUT 4 "opcode";
     .port_info 1 /OUTPUT 1 "write_en";
     .port_info 2 /OUTPUT 3 "ALU_CTL";
-    .port_info 3 /OUTPUT 1 "data_rom_wrtie_en";
+    .port_info 3 /OUTPUT 1 "data_rom_write_en";
     .port_info 4 /NODIR 0 "";
 L_00000235e5366430 .functor OR 1, L_00000235e5368b50, L_00000235e5369190, C4<0>, C4<0>;
 v00000235e52f0530_0 .net8 "ALU_CTL", 2 0, RS_00000235e529e3a8;  alias, 2 drivers
@@ -1862,7 +1862,7 @@ L_00000235e5309818 .functor BUFT 1, C4<1>, C4<0>, C4<0>, C4<0>;
 v00000235e52f1250_0 .net/2u *"_ivl_4", 0 0, L_00000235e5309818;  1 drivers
 L_00000235e5309860 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
 v00000235e52f0d50_0 .net/2u *"_ivl_6", 0 0, L_00000235e5309860;  1 drivers
-v00000235e52f1d90_0 .net "data_rom_wrtie_en", 0 0, L_00000235e5360fe0;  alias, 1 drivers
+v00000235e52f1d90_0 .net "data_rom_write_en", 0 0, L_00000235e5360fe0;  alias, 1 drivers
 v00000235e52f0990_0 .net "opcode", 3 0, L_00000235e5360680;  alias, 1 drivers
 v00000235e52f0e90_0 .net "write_en", 0 0, L_00000235e53676b0;  alias, 1 drivers
 L_00000235e5360e00 .cmp/eq 4, L_00000235e5360680, L_00000235e53097d0;
