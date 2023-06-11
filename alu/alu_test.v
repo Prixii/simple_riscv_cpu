@@ -17,27 +17,25 @@ module alu_test ();
     ); 
 
     initial begin
-        ALU_DA <= 16'd0;
-        ALU_DB <= 16'd0;
+        ALU_DA <= 16'd51;
+        ALU_DB <= 16'd59;
         ALU_CTL <= 3'b000;
         ALU_SHIFT <= 4'b0000;
 
-        #200
+        #20
         ALU_DA <= 16'hfff0;
-        ALU_DB <= 16'h0ff0;
+        ALU_DB <= 16'h00f0;
         ALU_CTL <= 3'b010;
 
-        #200
+        #20
         ALU_CTL <= 3'b011;
 
-        #200
-        ALU_DA <= 16'd0;
-        ALU_DB <= 16'd0;
+        #20
         ALU_CTL <= 3'b000;
     end
     
     initial begin            
-        $dumpfile("alu_test.vcd");      
+        $dumpfile("./alu/alu_test.vcd");      
         $dumpvars(0, alu_test);   
     end
 endmodule

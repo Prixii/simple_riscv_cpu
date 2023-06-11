@@ -47,25 +47,28 @@
     endmodule
 
 
-// 它居然能支持4种指令！传说一般的存在
+// 它居然能支持11种指令！传说一般的存在
     module decoder_pro_max_ultra (
         instruction,    // 指令输入
         opcode,         // 操作码
         rs1, rs2,     // 寄存器地址
         addr,    // 写回data_rom的地址 
         imm,     // 立即数
+        shift,
     );
 
         input [15: 0] instruction;
         
         output [3: 0] opcode;
-        output [2: 0] rs1, rs2, rs3;
+        output [2: 0] rs1, rs2;
+        output [3: 0] shift;
         output [8: 0] addr;
         output [8: 0] imm;
 
         assign opcode = instruction[15: 12]; 
         assign rs1 = instruction[11: 9];
         assign rs2 = instruction[8: 6];
+        assign shift = instruction[11:8];
         assign addr = instruction[8: 0];
         assign imm = instruction[8: 0];
     endmodule

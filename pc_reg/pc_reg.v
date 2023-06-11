@@ -11,11 +11,13 @@
 module pc_reg (
     clk,        // 时钟
     rst_n,      // 复位
+    pc_in,      // PC 想要更新的PC值   
     pc_out      // 更新后的PC值
 );
 
     input clk;
     input rst_n;
+    input [7:0] pc_in;
 
     output reg [7: 0] pc_out;
 
@@ -23,7 +25,7 @@ module pc_reg (
         if (!rst_n)         // 如果复位端被触发
             pc_out <= 8'd0; // 置零
         else
-            pc_out <= (pc_out + 1);   // 输出下一个pc值
+            pc_out <= (pc_in);   // 输出下一个pc值
     end
 
     initial begin
