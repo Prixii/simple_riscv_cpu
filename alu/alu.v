@@ -57,6 +57,10 @@ module ALU(
             `acc_cla: ALU_DC <= 16'd0;
             `acc_com: ALU_DC <= ~ALU_DC;
         endcase
+<<<<<<< HEAD
+=======
+        
+>>>>>>> aff975473c87517e197709b9412201ede466c1fe
     end
 
     // ******** 运算 ********

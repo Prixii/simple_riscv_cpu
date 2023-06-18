@@ -177,12 +177,22 @@
             .pc_in(pc_in),
             .pc_out(rom_addr)
         );
+<<<<<<< HEAD
         always @(posedge clk && opcode!=`stp_pmu) begin
             case (opcode)
                 `jmp_pmu: pc_in = imm;
                 `ban_pmu:pc_in = pc_in + (ALU_result[15] == 1) ? imm : 0;
                 default: pc_in = pc_in +1;
             endcase
+=======
+        always @(posedge clk ) begin
+            case (opcode)
+                `jmp_pmu: pc_in = imm;
+                `ban_pmu:pc_in = pc_in + ALU_result[15];
+                default: pc_in = pc_in +1;
+            endcase
+
+>>>>>>> aff975473c87517e197709b9412201ede466c1fe
         end
     // ************************** 定义reg_file ***********************
     // 输入写地址write_reg_addr, 写数据 write_data
