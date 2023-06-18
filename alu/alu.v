@@ -21,17 +21,20 @@
 // | ALU_OverFlow    | out   | 溢出标志                      |
 // | ALU_DC[15: 0]   | out   | 运算结果                      |
 // ****************************************
+`include "./define/define.v"
 
 module ALU(
     ALU_DA,ALU_DB,  // 两个操作数
     ALU_CTL,    // 控制信号
     ALU_SHIFT,
     ALU_DC,    // 运算结果
-    ALU_OverFlow        // 溢出符号   
+    ALU_OverFlow,        // 溢出符号   
+    ACC_CTL,
 );
     input [15: 0] ALU_DA, ALU_DB;
     input [3: 0] ALU_SHIFT;
     input [2: 0] ALU_CTL;
+    input [1: 0] ACC_CTL;
     
     output reg [15: 0] ALU_DC;
     output ALU_OverFlow;
@@ -42,11 +45,18 @@ module ALU(
 
     // 运算类型判定，选择结果返回
     always @(*) begin
-        case (Operate_CTL)
-            2'b00: ALU_DC = arthimetic_result;  // 00* 为加法运算
-            2'b01: ALU_DC = logic_result;       // 01* 为逻辑运算
-            default: ALU_DC = shift_result;     // 10* 与 11* 为移位运算
-        endcase    
+        if (ACC_CTL !=`acc_cla && ACC_CTL !=`acc_com) begin
+            case (Operate_CTL)
+                2'b00: ALU_DC = arthimetic_result;  // 00* 为加法运算
+                2'b01: ALU_DC = logic_result;       // 01* 为逻辑运算
+                default: ALU_DC = shift_result;     // 10* 与 11* 为移位运算
+            endcase    
+        end
+
+        case (ACC_CTL)
+            `acc_cla: ALU_DC <= 16'd0;
+            `acc_com: ALU_DC <= ~ALU_DC;
+        endcase
     end
 
     // ******** 运算 ********
@@ -89,6 +99,9 @@ module ALU(
         .shift_ctl(shift_ctl),
         .shift_result(shift_result)
     );
+
+
+
 
 endmodule
 
@@ -139,7 +152,7 @@ always @(*) begin
         2'b00: shift_result = ALU_DA << ALU_SHIFT;  // 逻辑左移
         2'b01: shift_result = ALU_DA >> ALU_SHIFT;  // 逻辑右移
         2'b10: shift_result = ({16{ALU_DA[15]}} << shift_n) | 
-        (ALU_DA >> ALU_SHIFT);  // 算数右移
+        (ALU_DA >> 1);  // 算数右移
         default: shift_result = ALU_DA; 
     endcase
 end

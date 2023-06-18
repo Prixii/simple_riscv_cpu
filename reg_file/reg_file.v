@@ -25,7 +25,8 @@ module reg_file (
                 registers[i] = 16'd0;
         end 
         else if (write_en & (write_addr != 0)) begin    // 写使能触发，并且目标寄存器不是0号寄存器
-            registers[write_addr] <= write_data;    
+            registers[write_addr] <= write_data;
+                
         end
     end
 
